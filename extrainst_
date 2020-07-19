@@ -1,0 +1,16 @@
+#!/bin/bash
+
+if [[ $1 == install ]]; then
+    echo "Fresh install. Loading and starting daemon..."
+    launchctl load /Library/LaunchDaemons/me.izaacj.ios.iroute.plist
+    launchctl start me.izaacj.ios.iroute.plist
+fi
+
+if [[ $1 == upgrade ]]; then
+    echo "Upgrade. Reloading and starting daemon..."
+    launchctl unload /Library/LaunchDaemons/me.izaacj.ios.iroute.plist
+    launchctl load /Library/LaunchDaemons/me.izaacj.ios.iroute.plist
+    launchctl start me.izaacj.ios.iroute.plist
+fi
+
+echo "Done!"
