@@ -5,7 +5,7 @@ include $(THEOS)/makefiles/common.mk
 
 APPLICATION_NAME = iRoute
 
-iRoute_FILES = main.m izaAppDelegate.m izaRootViewController.m
+iRoute_FILES = main.m izaAppDelegate.m izaRootViewController.m izaRouteCell.m
 iRoute_FRAMEWORKS = UIKit CoreGraphics
 iRoute_CFLAGS = -fobjc-arc
 

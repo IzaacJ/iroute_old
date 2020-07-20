@@ -1,4 +1,5 @@
 #import "izaRootViewController.h"
+#import "izaRouteCell.h"
 #import <UIKit/UIKit.h>
 
 @interface izaRootViewController ()
@@ -100,15 +101,27 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
 	static NSString *CellIdentifier = @"Cell";
-	UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+	izaRouteCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
 
 	if (!cell) {
-		cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+		cell = [[izaRouteCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
 	}
 
 	NSMutableArray *route = _objects[indexPath.row];
-	cell.textLabel.text = route[0];
+	cell.name.text = route[0];
+	cell.targetNetwork.text = route[1];
+	cell.gateway.text = route[2];
+	cell.netmask.text = route[3];
 	return cell;
+}
+
+- (CGFloat)tableView:(UITableView*)tableView heightForRowAtIndexPath:(NSIndexPath*)indexPath {
+	switch (indexPath.section) {
+		case 1:
+			return 60;
+		default:
+			return UITableViewAutomaticDimension;
+	}
 }
 
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
