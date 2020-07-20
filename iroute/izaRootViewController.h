@@ -1,5 +1,5 @@
 #import <UIKit/UIKit.h>
 
-@interface izaRootViewController : UITableViewController
+@interface izaRootViewController : UITableViewController <UITextFieldDelegate>
 
 @end
