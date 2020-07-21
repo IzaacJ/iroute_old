@@ -9,7 +9,7 @@
 	UITextField *_gateway;
 	UITextField *_netmask;
 	NSUserDefaults *defaults;
-	static NSString *CellIdentifier = @"Cell";
+	NSString *CellIdentifier;
 }
 @property (nonatomic, strong) NSMutableArray * objects;
 @end
@@ -19,12 +19,14 @@
 - (void)loadView {
 	[super loadView];
 
+	CellIdentifier = @"Cell";
+
 	defaults = [NSUserDefaults standardUserDefaults]; 
 	_objects = [NSMutableArray arrayWithArray:[defaults arrayForKey:@"routes"]];
 
     self.tableView.estimatedRowHeight = 100;
     self.tableView.rowHeight = UITableViewAutomaticDimension;
-	[self registerClass:[izaRouteCell class] forCellReuseIdentifier:CellIdentifier];
+	[self.tableView registerClass:[izaRouteCell class] forCellReuseIdentifier:CellIdentifier];
 
 	self.title = @"iRoute";
 	self.navigationItem.leftBarButtonItem = self.editButtonItem;

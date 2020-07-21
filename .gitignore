@@ -1,2 +1,3 @@
-packages
-.theos
+packages/
+.theos/
+test/
